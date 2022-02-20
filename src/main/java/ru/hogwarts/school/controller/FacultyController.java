@@ -38,8 +38,9 @@ public class FacultyController {
     }
 
     @DeleteMapping("{id}")
-    public Faculty deleteFaculty(@PathVariable int id) {
-        return facultyService.deleteFaculty(id);
+    public ResponseEntity deleteFaculty(@PathVariable int id) {
+        facultyService.deleteFaculty(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping
@@ -49,7 +50,7 @@ public class FacultyController {
 
     @GetMapping("/color{color}")
     public Collection<Faculty> getAllFacultiesWithColor(@PathVariable String color) {
-        return facultyService.getFacultiesWithColor(color);
+        return facultyService.findByColor(color);
     }
 
 }

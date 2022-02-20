@@ -10,7 +10,7 @@ public interface FacultyService {
     public Faculty createFaculty(Faculty faculty);
     public Faculty findFaculty(int id);
     public Faculty updateFaculty(Faculty faculty);
-    public Faculty deleteFaculty(int id);
+    public void deleteFaculty(int id);
     public Collection<Faculty> getAll();
-    public Collection<Faculty> getFacultiesWithColor(String color);
+    public Collection<Faculty> findByColor(String color);
 }
