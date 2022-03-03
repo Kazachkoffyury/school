@@ -13,4 +13,5 @@ public interface FacultyService {
     public void deleteFaculty(int id);
     public Collection<Faculty> getAll();
     public Collection<Faculty> findByColor(String color);
+    public Collection<Faculty> findByColorOrName(String color,String name);
 }
