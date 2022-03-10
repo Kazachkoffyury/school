@@ -34,7 +34,7 @@ public class AvatarServiceImpl implements AvatarService {
     }
 
     public void uploadAvatar(Long studentId, MultipartFile avatarFile) throws IOException {
-        Student student = studentRepository.getById(Math.toIntExact(studentId));
+        Student student = studentRepository.getById((long) Math.toIntExact(studentId));
         Path filePath = Path.of(avatarsDir, student + "." + getExtensions(Objects.requireNonNull(avatarFile.getOriginalFilename())));
         Files.createDirectories(filePath.getParent());
         Files.deleteIfExists(filePath);
