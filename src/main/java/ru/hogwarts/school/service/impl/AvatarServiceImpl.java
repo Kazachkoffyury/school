@@ -25,7 +25,7 @@ public class AvatarServiceImpl implements AvatarService {
     private final StudentRepository studentRepository;
 
 
-    @Value("avatars")
+    @Value("${path.to.avatars.folder}")
     private String avatarsDir;
 
     public AvatarServiceImpl(AvatarRepository avatarRepository, StudentRepository studentRepository) {
