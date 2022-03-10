@@ -18,7 +18,7 @@ public class FacultyController {
     }
 
     @PostMapping
-    public ResponseEntity createFaculty(@RequestBody Faculty faculty) {
+    public ResponseEntity<Faculty> createFaculty(@RequestBody Faculty faculty) {
         Faculty createdFaculty = facultyService.createFaculty(faculty);
         return ResponseEntity.ok(createdFaculty);
 

@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Student {
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     private String name;
     private int age;
 
@@ -15,9 +15,13 @@ public class Student {
     @JoinColumn(name ="faculty_id")
     private Faculty faculty;
 
+    public Student() {
 
-    public int getId() {
-        return id;
+    }
+
+
+    public long getId() {
+        return  id;
     }
 
     public void setId(int id) {
@@ -40,25 +44,7 @@ public class Student {
         this.age = age;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return id == student.id && age == student.age && Objects.equals(name, student.name);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, age);
-    }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
+
 }
