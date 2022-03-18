@@ -12,6 +12,9 @@ public interface StudentService {
     public Collection<Student> getAll();
     public Collection<Student> findByAge(int age);
     public Collection<Student> findByAgeBetween(int minAge, int maxAge);
+    public Integer getCountStudent();
+    public Integer getAvgAgeStudent();
+    public Collection<Student> getLastStudent();
 }
 
 
