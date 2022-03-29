@@ -1,5 +1,7 @@
 package ru.hogwarts.school.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.repository.FacultyRepository;
@@ -10,6 +12,7 @@ import java.util.stream.Collectors;
 @Service
 
 public class FacultyServiceImpl implements FacultyService {
+    private static final Logger log = LoggerFactory.getLogger(FacultyServiceImpl.class);
     private final FacultyRepository facultyRepository;
 
     public FacultyServiceImpl(FacultyRepository facultyRepository) {
@@ -19,22 +22,25 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public Faculty createFaculty(Faculty faculty) {
+        log.info("Faculty is create");
         return facultyRepository.save(faculty);
     }
 
     @Override
     public Faculty findFaculty(int id) {
+        log.info("Faculty is find");
         return facultyRepository.getById(id);
     }
 
     @Override
     public Faculty updateFaculty(Faculty faculty) {
+        log.info("Faculty id update");
         return facultyRepository.save(faculty);
     }
 
     @Override
     public void deleteFaculty(int id) {
-
+         log.info("Faculty is delete");
          facultyRepository.deleteById(id);
     }
 

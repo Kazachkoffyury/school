@@ -1,5 +1,7 @@
 package ru.hogwarts.school.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Student;
@@ -13,6 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
+    private static final Logger log = LoggerFactory.getLogger(StudentServiceImpl.class);
 
     public StudentServiceImpl(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
@@ -21,22 +24,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public  Student createStudent(Student student) {
+        log.info("Student was create");
         return studentRepository.save(student);
     }
 
     @Override
     public Student findStudent(long id) {
-
+        log.info("Student is find");
         return studentRepository.getById(id);
     }
 
     @Override
     public Student updateStudent(Student student) {
+        log.info("Student is update");
         return studentRepository.save(student);
     }
 
     @Override
     public void deleteStudent(long id) {
+        log.info("Student delete");
          studentRepository.deleteById(id);
 
 
