@@ -1,6 +1,8 @@
 package ru.hogwarts.school.service.impl;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,7 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 @Service
 @Transactional
 public class AvatarServiceImpl implements AvatarService {
+    private static final Logger log = LoggerFactory.getLogger(AvatarServiceImpl.class);
     private final AvatarRepository avatarRepository;
     private final StudentRepository studentRepository;
 
@@ -55,9 +58,11 @@ public class AvatarServiceImpl implements AvatarService {
         avatar.setMediaType(avatarFile.getContentType());
         avatar.setData(avatarFile.getBytes());
         avatarRepository.save(avatar);
+        log.info("Avatar id Upload");
     }
 
     public Avatar findAvatar(Long studentId) {
+        log.info("Avatar id find");
         return avatarRepository.findByStudentId(studentId).orElse(new Avatar());
     }
 

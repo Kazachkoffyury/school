@@ -1,5 +1,7 @@
 package ru.hogwarts.school.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ru.hogwarts.school.model.Avatar;
 
 import ru.hogwarts.school.service.impl.AvatarServiceImpl;
+import ru.hogwarts.school.service.impl.StudentServiceImpl;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -22,6 +25,8 @@ import java.util.List;
 @RequestMapping("/avatar")
 public class AvatarController {
     private final AvatarServiceImpl avatarServiceImpl;
+
+
 
     public AvatarController(AvatarServiceImpl avatarServiceImpl) {
         this.avatarServiceImpl = avatarServiceImpl;
