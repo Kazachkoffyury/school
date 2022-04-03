@@ -2,7 +2,6 @@ package ru.hogwarts.school.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
@@ -71,11 +70,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Integer getAvgAgeStudent() {
-        return studentRepository.getAvgAgeStudent();
+
+        return (int)studentRepository.findAll().stream()
+                .mapToInt(Student::getAge)
+                .average()
+                .orElse(0);
     }
 
     @Override
     public Collection<Student> getLastStudent() {
         return studentRepository.getLastStudent();
+    }
+
+    @Override
+    public List<String> getStudentWithPrefixA() {
+        return studentRepository.findAll().stream()
+                .map(Student::getName)
+                .map(String::toUpperCase)
+                .filter(it -> it.startsWith("А"))
+                .sorted()
+                .collect(Collectors.toList());
     }
 }

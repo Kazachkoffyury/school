@@ -58,4 +58,9 @@ public class FacultyController {
         return facultyService.findByColorOrName(colorFaculty,name);
     }
 
+    @GetMapping("/get-long-name")
+    public String getLongName() {
+        return facultyService.getLongName();
+    }
+
 }

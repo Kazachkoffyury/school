@@ -8,6 +8,7 @@ import ru.hogwarts.school.service.StudentService;
 
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("student")
@@ -67,6 +68,11 @@ public class StudentController {
     @GetMapping("get-last-student")
     public  Collection<Student> getLastStudent() {
         return studentService.getLastStudent();
+    }
+
+    @GetMapping("/get-student-withPrefixA")
+    public List<String> getStudentWithPrefixA(){
+        return studentService.getStudentWithPrefixA();
     }
 
 
