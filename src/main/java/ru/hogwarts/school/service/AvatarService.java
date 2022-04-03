@@ -11,4 +11,5 @@ public interface AvatarService {
     public Avatar findAvatar(Long studentId);
 
 
+
 }

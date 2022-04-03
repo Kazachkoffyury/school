@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.hogwarts.school.model.Avatar;
 
+import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.service.impl.AvatarServiceImpl;
 import ru.hogwarts.school.service.impl.StudentServiceImpl;
 
@@ -66,6 +67,8 @@ public class AvatarController {
     public List<Avatar> getAvatarPage(@RequestParam Integer page,@RequestParam Integer size) {
         return avatarServiceImpl.getAvatarPage(page,size);
     }
+
+
 
 }
 
