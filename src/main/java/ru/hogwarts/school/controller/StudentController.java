@@ -9,6 +9,7 @@ import ru.hogwarts.school.service.StudentService;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 @RestController
 @RequestMapping("student")
@@ -80,6 +81,16 @@ public class StudentController {
     @GetMapping(params = {"minAge","maxAge"})
     public  Collection<Student> getStudentByAgeBetween(@RequestParam(required = false) int minAge, @RequestParam(required = false) int maxAge) {
         return studentService.findByAgeBetween(minAge,maxAge);
+    }
+
+    @GetMapping("/threads-paralels")
+    public void getStudentInThreads() {
+        studentService.getStudentInThreadsParalels();
+    }
+
+    @GetMapping("/threads-synchronized")
+    public void getStudentInThreadsSynchronize() {
+        studentService.geyStudentInThreadsSynchronized();
     }
 
 

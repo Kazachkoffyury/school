@@ -17,6 +17,8 @@ public interface StudentService {
     public Integer getAvgAgeStudent();
     public Collection<Student> getLastStudent();
     public List<String> getStudentWithPrefixA();
+    public void getStudentInThreadsParalels();
+    public void geyStudentInThreadsSynchronized();
 }
 
 

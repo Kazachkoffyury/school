@@ -91,4 +91,52 @@ public class StudentServiceImpl implements StudentService {
                 .sorted()
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void getStudentInThreadsParalels() {
+       Thread thread1 = new Thread(()-> {
+          printName(1);
+          printName(2);
+        });
+
+       Thread thread2 = new Thread(()-> {
+           printName(3);
+           printName(4);
+       });
+
+       thread1.start();
+       thread2.start();
+       printName(5);
+       printName(6);
+
+    }
+
+    @Override
+    public void geyStudentInThreadsSynchronized() {
+        Thread thread1 = new Thread(()-> {
+           printNameSync(1);
+           printNameSync(2);
+        });
+
+        Thread thread2 = new Thread(() -> {
+            printNameSync(3);
+            printNameSync(4);
+        });
+
+
+        printNameSync(5);
+        printNameSync(6);
+        thread1.start();
+        thread2.start();
+
+    }
+
+
+    public void printName(long id) {
+        System.out.println(studentRepository.getById(id).getName());
+    }
+
+    public synchronized void printNameSync(long id) {
+        System.out.println(studentRepository.getById(id).getName());
+    }
 }
